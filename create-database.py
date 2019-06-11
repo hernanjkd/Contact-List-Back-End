@@ -5,7 +5,7 @@ engine = sqlalchemy.create_engine("mysql://root@localhost")
 conn = engine.connect()
 existing_databases = engine.execute("SHOW DATABASES;")
 existing_databases = [d[0] for d in existing_databases]
-if 'contact-list' not in existing_databases:
-    conn.execute("CREATE DATABASE contact-list")
+if 'contact_list' not in existing_databases:
+    conn.execute("CREATE DATABASE contact_list")
     conn.execute("commit")
 conn.close()

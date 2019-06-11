@@ -36,12 +36,14 @@ def handle_person():
 
         if body is None:
             raise APIException("You need to specify the request body as a json object", status_code=400)
-        if 'username' not in body:
-            raise APIException('You need to specify the username', status_code=400)
+        if 'fullname' not in body and 'email' not in body:
+            raise APIException("You need to specify the fullname and email", status_code=400)
+        if 'fullname' not in body:
+            raise APIException('You need to specify the fullname', status_code=400)
         if 'email' not in body:
             raise APIException('You need to specify the email', status_code=400)
 
-        user1 = Person(username=body['username'], email=body['email'])
+        user1 = Person(fullname=body['fullname'], email=body['email'], phone=body['phone'], address=body['address'])
         db.session.add(user1)
         db.session.commit()
         return "ok", 200
@@ -71,10 +73,14 @@ def get_single_person(person_id):
         if user1 is None:
             raise APIException('User not found', status_code=404)
 
-        if "username" in body:
-            user1.username = body["username"]
+        if "fullname" in body:
+            user1.fullname = body["fullname"]
         if "email" in body:
             user1.email = body["email"]
+        if 'phone' in body:
+            user1.phone = body['phone']
+        if 'address' in body:
+            user1.phone = body['address']
         db.session.commit()
 
         return jsonify(user1.serialize()), 200
