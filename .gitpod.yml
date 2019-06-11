@@ -8,6 +8,7 @@ tasks:
         cp .env.example .env;
         pipenv install;
     - command: python3 create-database.py;
+    - init: >
         pipenv run init;
         pipenv run migrate;
         pipenv run upgrade;
