@@ -49,7 +49,7 @@ def handle_person():
             phone=body['phone'],
             address=body['address'],
             gender=body['gender'],
-            image_url=body['image-url'])
+            image_url=body['image_url'])
         db.session.add(user1)
         db.session.commit()
         return "ok", 200
