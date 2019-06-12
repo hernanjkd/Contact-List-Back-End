@@ -14,6 +14,7 @@ class Person(db.Model):
 
     def serialize(self):
         return {
+            "id": self.id,
             "username": self.fullname,
             "email": self.email,
             "phone": self.phone,
