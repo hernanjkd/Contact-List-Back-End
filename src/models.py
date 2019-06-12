@@ -22,5 +22,5 @@ class Person(db.Model):
             "phone": self.phone,
             "address": self.address,
             "gender": self.gender,
-            "image-url": self.image_url
+            "image_url": self.image_url
         }
