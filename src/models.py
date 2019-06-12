@@ -8,6 +8,8 @@ class Person(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     phone = db.Column(db.String(20), unique=True)
     address = db.Column(db.String(120))
+    gender = db.Column(db.String(1))
+    image_url = db.Column(db.String(120))
 
     def __repr__(self):
         return '<Person %r>' % self.fullname
@@ -15,8 +17,10 @@ class Person(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "username": self.fullname,
+            "fullname": self.fullname,
             "email": self.email,
             "phone": self.phone,
-            "address": self.address
+            "address": self.address,
+            "gender": self.gender,
+            "image-url": self.image_url
         }

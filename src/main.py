@@ -43,7 +43,13 @@ def handle_person():
         if 'email' not in body:
             raise APIException('You need to specify the email', status_code=400)
 
-        user1 = Person(fullname=body['fullname'], email=body['email'], phone=body['phone'], address=body['address'])
+        user1 = Person(
+            fullname=body['fullname'],
+            email=body['email'],
+            phone=body['phone'],
+            address=body['address'],
+            gender=body['gender'],
+            image_url=body['image-url'])
         db.session.add(user1)
         db.session.commit()
         return "ok", 200
