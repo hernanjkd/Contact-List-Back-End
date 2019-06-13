@@ -87,7 +87,7 @@ def get_single_person(person_id):
         if 'phone' in body:
             user1.phone = body['phone']
         if 'address' in body:
-            user1.phone = body['address']
+            user1.address = body['address']
         db.session.commit()
 
         return jsonify(user1.serialize()), 200
